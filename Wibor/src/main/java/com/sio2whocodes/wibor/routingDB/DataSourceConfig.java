@@ -56,7 +56,6 @@ public class DataSourceConfig {
         Map<Object, Object> targetDataSources = new HashMap<>();
         targetDataSources.put("cloud", cloudDataSource());
         targetDataSources.put("local", localDataSource());
-        targetDataSources.put("local2", local2DataSource());
 
         tenantDataSources = targetDataSources;
         return targetDataSources;
@@ -69,8 +68,8 @@ public class DataSourceConfig {
     }
     public void addTenant(RegistryDto databaseInfo) throws SQLException {
         DataSource dataSource = DataSourceBuilder.create()
-            .driverClassName("com.mysql.cj.jdbc.Driver")
-            .url(databaseInfo.getDburl()+"?useSSL=false")
+            .driverClassName("org.h2.Driver")
+            .url(databaseInfo.getDburl()+";AUTO_SERVER=true;MODE=MySQL;NON_KEYWORDS=USER")
             .username(databaseInfo.getDbusername())
             .password(databaseInfo.getDbpassword())
             .build();
@@ -107,21 +106,6 @@ public class DataSourceConfig {
     @Bean
     public DataSource localDataSource() {
         return localDataSourceProperties()
-                .initializeDataSourceBuilder()
-                .type(HikariDataSource.class)
-                .build();
-    }
-
-    // local2 data source
-    @Bean
-    @ConfigurationProperties("spring.datasource.local2")
-    public DataSourceProperties local2DataSourceProperties() {
-        return new DataSourceProperties();
-    }
-
-    @Bean
-    public DataSource local2DataSource() {
-        return local2DataSourceProperties()
                 .initializeDataSourceBuilder()
                 .type(HikariDataSource.class)
                 .build();

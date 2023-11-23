@@ -1,6 +1,7 @@
 package com.sio2whocodes.wibor.entity;
 
 import com.sio2whocodes.wibor.annotation.DynamicFog;
+import com.sio2whocodes.wibor.annotation.StaticCloud;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,7 +25,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-@DynamicFog
+@StaticCloud
 @Entity
 public class Post {
     @Id

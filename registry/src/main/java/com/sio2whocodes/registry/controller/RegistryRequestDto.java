@@ -16,8 +16,8 @@ import lombok.ToString;
 public class RegistryRequestDto {
     private String locationCode;
     private String entity;
-    private String DBUrl;
-    private String DBUsername;
-    private String DBPassword;
-    private String DBId;
+    private String dbUrl;
+    private String dbUsername;
+    private String dbPassword;
+    private String dbId;
 }

@@ -29,10 +29,10 @@ public class RegistryService {
         Registry registry = Registry.builder()
             .entity(requestDto.getEntity())
             .locationCode(requestDto.getLocationCode())
-            .DBUrl(requestDto.getDBUrl())
-            .DBUsername(requestDto.getDBUsername())
-            .DBPassword(requestDto.getDBPassword())
-            .DBId(requestDto.getDBId())
+            .DBUrl(requestDto.getDbUrl())
+            .DBUsername(requestDto.getDbUsername())
+            .DBPassword(requestDto.getDbPassword())
+            .DBId(requestDto.getDbId())
             .build();
 
         registryRepository.save(registry);
